@@ -1,6 +1,8 @@
 "use client";
 import React, { useState } from "react";
-import ImageCard from "@/components/GalleryImageCard/GalleryImages"; // Assuming the ImageCard component is located in a directory named "components" and has an alias "ImageCard"
+import ImageCard from "@/components/GalleryImageCard/GalleryImages";
+import ButtonGroup from "@/components/ButtonGroup/ButtonGroup";
+import GalleryNavBar from "@/components/GalleryNavBar/GalleryNavBar";
 
 interface CapDesign {
   id: number;
@@ -554,8 +556,9 @@ const CapDesign: React.FC = () => {
 
   return (
     <div className="flex flex-col">
-      <div className="flex justify-center items-center bg-emerald-700 h-80">
-        <h1 className="text-5xl">Cap Gallery</h1>
+      <div className="flex flex-col justify-center items-center bg-emerald-700 h-80">
+        <h1 className="text-5xl galleryH1">Cap Gallery</h1>
+        <GalleryNavBar />
       </div>
       <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4 mx-auto p-4 -mt-24">
         {/* Image Gallery */}
@@ -568,6 +571,7 @@ const CapDesign: React.FC = () => {
           </div>
         ))}
       </div>
+      <ButtonGroup />
     </div>
   );
 };

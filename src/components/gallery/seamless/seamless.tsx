@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import ImageCard from "@/components/GalleryImageCard/GalleryImages";
+import GoToTopButton from "@/components/GoToTopButton/TopButton"; // Import the GoToTopButton component
 
 interface SeamlessDesign {
   id: number;
@@ -64,6 +65,7 @@ const SeamlessDesigns: React.FC = () => {
           </div>
         ))}
       </div>
+      <GoToTopButton />
     </div>
   );
 };
