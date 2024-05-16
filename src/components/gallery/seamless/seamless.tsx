@@ -1,15 +1,19 @@
 "use client";
 import React, { useState } from "react";
 import ImageCard from "@/components/GalleryImageCard/GalleryImages";
-import GoToTopButton from "@/components/GoToTopButton/TopButton"; // Import the GoToTopButton component
+import GoToTopButton from "@/components/GoToTopButton/TopButton";
+import Modal from "@/components/Modal/Modal";
+import Image from "next/image";
 
 interface SeamlessDesign {
   id: number;
   src: string;
   alt: string;
 }
-
 const SeamlessDesigns: React.FC = () => {
+  const [selectedImage, setSelectedImage] = useState<SeamlessDesign | null>(
+    null
+  );
   // Dummy data for designs
   const initialDesigns: SeamlessDesign[] = [
     {
@@ -48,6 +52,13 @@ const SeamlessDesigns: React.FC = () => {
       src: "https://maddyfx.me/images/Seamless_Pattern_Optimized/Thonesix_Seamless_pattern_design_by_maddyfx_me.jpg",
     },
   ];
+  const handleImageClick = (design: SeamlessDesign) => {
+    setSelectedImage(design); // Update state when an image is clicked
+  };
+
+  const closeModal = () => {
+    setSelectedImage(null); // Close modal
+  };
 
   return (
     <div className="flex flex-col">
@@ -60,12 +71,30 @@ const SeamlessDesigns: React.FC = () => {
           <div
             key={design.id}
             className="break-inside-avoid justify-center items-center"
+            onClick={() => handleImageClick(design)} // Attach click handler
           >
             <ImageCard image={design} />
           </div>
         ))}
       </div>
       <GoToTopButton />
+      {/* Render Modal */}
+      {selectedImage && (
+        <Modal
+          onClose={closeModal}
+          images={initialDesigns}
+          initialIndex={initialDesigns.findIndex(
+            (image) => image.id === selectedImage.id
+          )}
+        >
+          <Image
+            src={selectedImage.src}
+            alt={selectedImage.alt}
+            width={550}
+            height={550}
+          />
+        </Modal>
+      )}
     </div>
   );
 };
