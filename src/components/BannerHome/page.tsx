@@ -59,7 +59,7 @@ const Banner = () => {
             className="bg-gradient-to-t from-blue-700 to-fuchsia-600 text-transparent bg-clip-text font-extrabold text-2xl lg:text-4xl "
             repeat={Infinity}
           />
-          <p className="w-full text-center lg:text-start lg:w-2/3 2xl:w-3/4 text-sm pt-4 2xl:pt-16 text-slate-500">
+          <p className="w-full text-center lg:text-start lg:w-2/3 2xl:w-3/4 text-base pt-4 2xl:pt-16 text-slate-300">
             {" "}
             I am a Graphics Designer and Print On Demand Expert. I am working
             with several Amazon Brands and Individual Buyers as there complete
@@ -68,11 +68,10 @@ const Banner = () => {
             to discuss More.
           </p>
           <div className="flex item-center justify-center lg:justify-start gap-6 pt-8 2xl:pt-16">
-            <div className="dwnldBtn flex items-center gap-2 2xl:gap-4 2xl:text-2xl">
-              <RiDownload2Line className="text-xl 2xl:text-3xl" />{" "}
-              <span>Download CV</span>{" "}
+            <div className="dwnldBtn flex items-center gap-2 2xl:gap-4 ">
+              <RiDownload2Line className="text-xl " /> <span>Download CV</span>{" "}
             </div>
-            <div className="ghostBtn flex items-center gap-2 2xl:gap-4 2xl:text-2xl">
+            <div className="ghostBtn flex items-center gap-2 2xl:gap-4 ">
               <span>Contact Me</span> <FaArrowRight />
             </div>
           </div>
@@ -85,7 +84,7 @@ const Banner = () => {
           ref={imageRef}
         >
           <div className="border-4 rounded-3xl border-orange-500 bg-black bg-opacity-75 overflow-hidden transition-transform hover:scale-110 ease-in-out">
-            <div className="w-64 h-64 md:w-[300px] md:h-[300px] 2xl:w-[400px] 2xl:h-[400px]">
+            <div className="w-64 h-64 md:w-[300px] md:h-[300px] ">
               <Image
                 className="object-contain w-full h-full"
                 src="https://maddyfx.me/images/Madllee_Maddy.png"

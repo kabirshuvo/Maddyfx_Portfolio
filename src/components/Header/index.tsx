@@ -50,7 +50,7 @@ export default function Header() {
       {/* contact btn */}
       <div className="orangeBtn hidden sm:block md:flex justify-center items-center">
         <Link href="/contact">
-          <p className="flex items-center justify-center gap-2 text-lg ">
+          <p className="flex items-center justify-center gap-2 text-sm ">
             <span>Let&apos;s talk</span> <FaRegPaperPlane />
           </p>
         </Link>
