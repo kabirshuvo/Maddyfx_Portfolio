@@ -23,7 +23,7 @@ const Banner = () => {
     <div
       id="home"
       // ref={ref}
-      className="relative h-full lg:h-[90vh] overflow-hidden px-4 sm:px-8 md:px-16 lg:px-20 2xl:px-40"
+      className="relative h-full lg:h-[88vh] overflow-hidden px-4 sm:px-8 md:px-16 lg:px-20 2xl:px-40"
       style={{ perspective: "1000px" }}
     >
       <div
@@ -32,32 +32,34 @@ const Banner = () => {
       ></div>
 
       <div
-        className="relative z-10 flex-row lg:flex items-center justify-center pt-40 md:pt-28 lg:pt-32 2xl:pt-52"
+        className="relative z-10 flex-row lg:flex items-center justify-center pt-20 md:pt-28 lg:pt-32 2xl:pt-52"
         ref={heroSectionRef}
       >
-        <div className="text-center lg:text-start w-full">
-          <h2 className="text-2xl lg:text-4xl 2xl:text-6xl pb-4">
+        <div className="text-center lg:text-start w-full flex flex-col justify-between gap-4">
+          <h2 className="text-2xl lg:text-4xl pb-4">
             Hi, This is <span className="text-orange-400">MADDY Fx</span>
           </h2>
           <p className="pb-4 text-slate-300 text-sm 2xl:text-xl">
             {" "}
-            I am a Profesional ______________
+            I am a Profesional:
           </p>
           <TypeAnimation
             sequence={[
-              "Graphics Designer",
+              "Textile Engineer.",
               2000,
-              "Adobe Illustrator",
+              "Graphic Designer.",
               2000,
-              "POD Expert",
+              "Entrepreneur.",
+              2000,
+              "Freelancer.",
               2000,
             ]}
             wrapper="span"
             speed={50}
-            className="bg-gradient-to-t from-blue-700 to-fuchsia-600 text-transparent bg-clip-text font-extrabold text-2xl lg:text-4xl 2xl:text-6xl"
+            className="bg-gradient-to-t from-blue-700 to-fuchsia-600 text-transparent bg-clip-text font-extrabold text-2xl lg:text-4xl "
             repeat={Infinity}
           />
-          <p className="w-full text-center lg:text-start lg:w-2/3 2xl:w-3/4 text-sm 2xl:text-2xl pt-4 2xl:pt-8 text-slate-500">
+          <p className="w-full text-center lg:text-start lg:w-2/3 2xl:w-3/4 text-sm pt-4 2xl:pt-16 text-slate-500">
             {" "}
             I am a Graphics Designer and Print On Demand Expert. I am working
             with several Amazon Brands and Individual Buyers as there complete
@@ -65,7 +67,7 @@ const Banner = () => {
             Service on time and in budget with Satisfaction. Please contact me
             to discuss More.
           </p>
-          <div className="flex item-center justify-center lg:justify-start gap-6 pt-8 2xl:pt-12">
+          <div className="flex item-center justify-center lg:justify-start gap-6 pt-8 2xl:pt-16">
             <div className="dwnldBtn flex items-center gap-2 2xl:gap-4 2xl:text-2xl">
               <RiDownload2Line className="text-xl 2xl:text-3xl" />{" "}
               <span>Download CV</span>{" "}

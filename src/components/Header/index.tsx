@@ -33,13 +33,15 @@ export default function Header() {
               initial={{ y: -100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
             >
-              <Link
-                //why my transform is not working
-                className="transform transition-transform duration-500 ease-in-out hover:scale-110 text-xs sm:text-sm md:text-base xl:text-lg 2xl:text-2xl"
-                href={link.hash}
-              >
-                {link.name}
-              </Link>
+              <span className="transform transition-transform duration-500 ease-in-out hover:scale-110">
+                <Link
+                  //why my transform is not working
+                  className=" text-xs sm:text-sm md:text-base xl:text-l "
+                  href={link.hash}
+                >
+                  {link.name}
+                </Link>
+              </span>
             </motion.li>
           ))}
         </ul>
@@ -48,7 +50,7 @@ export default function Header() {
       {/* contact btn */}
       <div className="orangeBtn hidden sm:block md:flex justify-center items-center">
         <Link href="/contact">
-          <p className="flex items-center justify-center gap-2 text-lg 2xl:text-2xl">
+          <p className="flex items-center justify-center gap-2 text-lg ">
             <span>Let&apos;s talk</span> <FaRegPaperPlane />
           </p>
         </Link>
