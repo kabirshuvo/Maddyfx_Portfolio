@@ -3,6 +3,7 @@ import { useSectionInView } from "@/lib/hooks";
 import React from "react";
 import Link from "next/link";
 import ImageCard from "@/components/GalleryImageCard/GalleryImageCard";
+import GalleryNavBar from "../GalleryNavBar/GalleryNavBar";
 
 // Define type for individual image data
 type ImageData = {
@@ -83,6 +84,9 @@ export default function GallerySection() {
           MaddyFX Image Gallery
         </h1>
         <p className="text-lg md:text-xl">Explore My Works.</p>
+        <div>
+          <GalleryNavBar />
+        </div>
       </div>
 
       {/* Image Gallery */}
