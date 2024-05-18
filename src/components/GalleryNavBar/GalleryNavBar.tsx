@@ -28,15 +28,6 @@ const GalleryNavBar: React.FC = () => {
     <nav className="grid grid-cols-4 lg:grid-cols-8 gap-4 p-4">
       <div className="tooltip">
         <button
-          onClick={goToHome}
-          className="rounded-full p-2 bg-green-950 text-white transform hover:scale-125 transition-transform duration-300 ease-in-out"
-        >
-          <FaHome />
-        </button>
-        <span className="tooltip-text">Home</span>
-      </div>
-      <div className="tooltip">
-        <button
           onClick={() => goToGallery("/gallery/caps")}
           className="rounded-full p-2 bg-yellow-950 text-white transform hover:scale-125 transition-transform duration-300 ease-in-out"
         >
@@ -97,6 +88,15 @@ const GalleryNavBar: React.FC = () => {
           <FaTshirt />
         </button>
         <span className="tooltip-text">T-Shirts</span>
+      </div>
+      <div className="tooltip">
+        <button
+          onClick={goToHome}
+          className="rounded-full p-2 bg-green-950 text-white transform hover:scale-125 transition-transform duration-300 ease-in-out"
+        >
+          <FaHome />
+        </button>
+        <span className="tooltip-text">Home</span>
       </div>
     </nav>
   );
