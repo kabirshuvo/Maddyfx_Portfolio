@@ -2,51 +2,55 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import ImageCard from "@/components/GalleryImageCard/GalleryImages";
-
-interface FootLinerDesign {
-  id: number;
-  src: string;
-  alt: string;
-}
+import {
+  FootlinerSocksDesignImages,
+  FootlinerSockInitialDesigns,
+} from "@/lib/galleryImageData/socksImage";
+import GalleryNavBar from "@/components/GalleryNavBar/GalleryNavBar";
+import GoToTopButton from "@/components/GoToTopButton/TopButton";
+import Modal from "@/components/Modal/Modal";
 
 const FootLiner: React.FC = () => {
-  // Dummy data for designs
-  const initialDesigns: FootLinerDesign[] = [
-    {
-      id: 1,
-      alt: "maddyFx_ToteBags",
-      src: "https://maddyfx.me/images/Socks/Foot_Liner_Socks_Designs/bricks_socks_design_foot_liner_invisible_no_show_sock_mockup_by_maddyfx_me.jpg",
-    },
-    {
-      id: 2,
-      alt: "maddyFx_ToteBags",
-      src: "https://maddyfx.me/images/Socks/Foot_Liner_Socks_Designs/solid_color_socks_design_foot_liner_invisible_no_show_sock_mockup_by_maddyfx_me.jpg",
-    },
-    {
-      id: 3,
-      alt: "maddyFx_ToteBags",
-      src: "https://maddyfx.me/images/Socks/Foot_Liner_Socks_Designs/sstripes_socks_design_foot_liner_invisible_no_show_sock_mockup_by_maddyfx_me.jpg",
-    },
-  ];
+  const [selectedImage, setSelectedImage] =
+    useState<FootlinerSocksDesignImages | null>(null);
 
-  const [designs, setDesigns] = useState<FootLinerDesign[]>(initialDesigns);
+  const handleImageClick = (design: FootlinerSocksDesignImages) => {
+    setSelectedImage(design);
+  };
+
+  const closeModal = () => {
+    setSelectedImage(null);
+  };
 
   return (
     <div className="flex flex-col">
-      <div className="flex justify-center items-center bg-emerald-700 h-80">
-        <h1 className="text-5xl">Foot Liner Socks Gallery</h1>
+      <div className="flex flex-col justify-center items-center bg-emerald-700 h-80">
+        <h1 className="text-5xl text-white">Footliner Socks</h1>
+        <hr />
+        <br />
+        <GalleryNavBar />
       </div>
       <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4 mx-auto p-4 -mt-24">
-        {/* Image Gallery */}
-        {initialDesigns.map((design) => (
+        {FootlinerSockInitialDesigns.map((design) => (
           <div
             key={design.id}
-            className="break-inside-avoid justify-center items-center"
+            className="break-inside-avoid justify-center items-center cursor-pointer"
+            onClick={() => handleImageClick(design)}
           >
             <ImageCard image={design} />
           </div>
         ))}
       </div>
+      <GoToTopButton />
+      {selectedImage && (
+        <Modal
+          onClose={closeModal}
+          images={FootlinerSockInitialDesigns}
+          initialIndex={FootlinerSockInitialDesigns.findIndex(
+            (image) => image.id === selectedImage.id
+          )}
+        />
+      )}
     </div>
   );
 };

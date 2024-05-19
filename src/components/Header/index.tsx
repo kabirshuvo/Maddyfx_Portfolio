@@ -18,8 +18,8 @@ export default function Header() {
         <Image
           src="https://maddyfx.me/images/MaddyFX%20Logo-wide.png"
           alt="Logo"
-          width={140}
-          height={50}
+          width={100}
+          height={30}
           // className="2xl:w-[50px] 2xl:h-[50px]"
         />
       </div>

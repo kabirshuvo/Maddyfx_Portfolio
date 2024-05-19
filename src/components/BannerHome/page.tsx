@@ -7,6 +7,8 @@ import { RiDownload2Line } from "react-icons/ri";
 import { useSectionInView } from "@/lib/hooks";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Brands from "./brands";
+import Link from "next/link";
+import DownloadButton from "../DownloadBTN/DownloadBTN";
 
 const Banner = () => {
   const heroSectionRef = useRef<HTMLDivElement>(null);
@@ -68,11 +70,15 @@ const Banner = () => {
             to discuss More.
           </p>
           <div className="flex item-center justify-center lg:justify-start gap-6 pt-8 2xl:pt-16">
-            <div className="dwnldBtn flex items-center gap-2 2xl:gap-4 ">
-              <RiDownload2Line className="text-xl " /> <span>Download CV</span>{" "}
+            <div className=" ">
+              <DownloadButton />
             </div>
-            <div className="ghostBtn flex items-center gap-2 2xl:gap-4 ">
-              <span>Contact Me</span> <FaArrowRight />
+            <div className="ghostBtn flex items-center gap-2 ">
+              <Link href="/contact">
+                <span className="flex items-center gap-2">
+                  Contact Me <FaArrowRight />
+                </span>
+              </Link>
             </div>
           </div>
         </div>

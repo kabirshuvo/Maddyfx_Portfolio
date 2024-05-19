@@ -2,62 +2,55 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import ImageCard from "@/components/GalleryImageCard/GalleryImages";
-
-interface ComparisonSocksDesign {
-  id: number;
-  src: string;
-  alt: string;
-}
+import {
+  ComparisonSocksDesign,
+  ComparisonSockImages,
+} from "@/lib/galleryImageData/socksImage";
+import GalleryNavBar from "@/components/GalleryNavBar/GalleryNavBar";
+import GoToTopButton from "@/components/GoToTopButton/TopButton";
+import Modal from "@/components/Modal/Modal";
 
 const ComparisonSocks: React.FC = () => {
-  // Dummy data for designs
-  const initialDesigns: ComparisonSocksDesign[] = [
-    {
-      id: 1,
-      alt: "maddyFx_ComparisonSocks",
-      src: "https://maddyfx.me/images/Socks/Compression_Socks_Designs/aucutee_socks_design_Compression_knee_high_sock_mockup_by_maddyfx_me.jpg",
-    },
-    {
-      id: 2,
-      alt: "maddyFx_ComparisonSocks",
-      src: "https://maddyfx.me/images/Socks/Compression_Socks_Designs/ms_socks_design_Compression_knee_high_sock_mockup_by_maddyfx_me.jpg",
-    },
-    {
-      id: 3,
-      alt: "maddyFx_ComparisonSocks",
-      src: "https://maddyfx.me/images/Socks/Compression_Socks_Designs/nw_socks_design_Compression_knee_high_sock_mockup_by_maddyfx_me.jpg",
-    },
-    {
-      id: 4,
-      alt: "maddyFx_ComparisonSocks",
-      src: "https://maddyfx.me/images/Socks/Compression_Socks_Designs/socksy_socks_design_Compression_knee_high_sock_mockup_by_maddyfx_me.jpg",
-    },
-    {
-      id: 5,
-      alt: "maddyFx_ComparisonSocks",
-      src: "https://maddyfx.me/images/Socks/Compression_Socks_Designs/sports_socks_design_Compression_knee_high_sock_mockup_by_maddyfx_me.jpg",
-    },
-  ];
+  const [selectedImage, setSelectedImage] =
+    useState<ComparisonSocksDesign | null>(null);
 
-  const [designs, setDesigns] =
-    useState<ComparisonSocksDesign[]>(initialDesigns);
+  const handleImageClick = (design: ComparisonSocksDesign) => {
+    setSelectedImage(design);
+  };
+
+  const closeModal = () => {
+    setSelectedImage(null);
+  };
 
   return (
     <div className="flex flex-col">
-      <div className="flex justify-center items-center bg-emerald-700 h-80">
-        <h1 className="text-5xl">ComparisonSocks Gallery</h1>
+      <div className="flex flex-col justify-center items-center bg-emerald-700 h-80">
+        <h1 className="text-5xl text-white">Comparison Socks </h1>
+        <hr />
+        <br />
+        <GalleryNavBar />
       </div>
       <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4 mx-auto p-4 -mt-24">
-        {/* Image Gallery */}
-        {initialDesigns.map((design) => (
+        {ComparisonSockImages.map((design) => (
           <div
             key={design.id}
-            className="break-inside-avoid justify-center items-center"
+            className="break-inside-avoid justify-center items-center cursor-pointer"
+            onClick={() => handleImageClick(design)}
           >
             <ImageCard image={design} />
           </div>
         ))}
       </div>
+      <GoToTopButton />
+      {selectedImage && (
+        <Modal
+          onClose={closeModal}
+          images={ComparisonSockImages}
+          initialIndex={ComparisonSockImages.findIndex(
+            (image) => image.id === selectedImage.id
+          )}
+        />
+      )}
     </div>
   );
 };

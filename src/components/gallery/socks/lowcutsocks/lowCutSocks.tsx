@@ -2,66 +2,55 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import ImageCard from "@/components/GalleryImageCard/GalleryImages";
-
-interface LowCutSocksDesign {
-  id: number;
-  src: string;
-  alt: string;
-}
+import {
+  LowCutSockDesignImages,
+  LowCutSocinitialDesigns,
+} from "@/lib/galleryImageData/socksImage";
+import GalleryNavBar from "@/components/GalleryNavBar/GalleryNavBar";
+import GoToTopButton from "@/components/GoToTopButton/TopButton";
+import Modal from "@/components/Modal/Modal";
 
 const LowCutSocks: React.FC = () => {
-  // Dummy data for designs
-  const initialDesigns: LowCutSocksDesign[] = [
-    {
-      id: 1,
-      alt: "maddyFx_LowCutSocksDesign",
-      src: "https://maddyfx.me/images/Socks/Low_cut_Socks_Designs/Finger_socks_design_1_low_cut_sock_mockup_by_maddyfx_me.jpg",
-    },
-    {
-      id: 2,
-      alt: "maddyFx_LowCutSocksDesign",
-      src: "https://maddyfx.me/images/Socks/Low_cut_Socks_Designs/Finger_socks_design_2_low_cut_sock_mockup_by_maddyfx_me.jpg",
-    },
-    {
-      id: 3,
-      alt: "maddyFx_LowCutSocksDesign",
-      src: "https://maddyfx.me/images/Socks/Low_cut_Socks_Designs/Finger_socks_design_3_low_cut_sock_mockup_by_maddyfx_me.jpg",
-    },
-    {
-      id: 4,
-      alt: "maddyFx_LowCutSocksDesign",
-      src: "https://maddyfx.me/images/Socks/Low_cut_Socks_Designs/Finger_socks_design_4_low_cut_sock_mockup_by_maddyfx_me.jpg",
-    },
-    {
-      id: 5,
-      alt: "maddyFx_LowCutSocksDesign",
-      src: "https://maddyfx.me/images/Socks/Low_cut_Socks_Designs/Finger_socks_design_5_low_cut_sock_mockup_by_maddyfx_me.jpg",
-    },
-    {
-      id: 6,
-      alt: "maddyFx_LowCutSocksDesign",
-      src: "https://maddyfx.me/images/Socks/Low_cut_Socks_Designs/Finger_socks_design_6_low_cut_sock_mockup_by_maddyfx_me.jpg",
-    },
-  ];
+  const [selectedImage, setSelectedImage] =
+    useState<LowCutSockDesignImages | null>(null);
 
-  const [designs, setDesigns] = useState<LowCutSocksDesign[]>(initialDesigns);
+  const handleImageClick = (design: LowCutSockDesignImages) => {
+    setSelectedImage(design);
+  };
+
+  const closeModal = () => {
+    setSelectedImage(null);
+  };
 
   return (
     <div className="flex flex-col">
-      <div className="flex justify-center items-center bg-emerald-700 h-80">
-        <h1 className="text-5xl">Lowcut Socks Gallery</h1>
+      <div className="flex flex-col justify-center items-center bg-emerald-700 h-80">
+        <h1 className="text-5xl text-white">Low Cut Socks</h1>
+        <hr />
+        <br />
+        <GalleryNavBar />
       </div>
       <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4 mx-auto p-4 -mt-24">
-        {/* Image Gallery */}
-        {initialDesigns.map((design) => (
+        {LowCutSocinitialDesigns.map((design) => (
           <div
             key={design.id}
-            className="break-inside-avoid justify-center items-center"
+            className="break-inside-avoid justify-center items-center cursor-pointer"
+            onClick={() => handleImageClick(design)}
           >
             <ImageCard image={design} />
           </div>
         ))}
       </div>
+      <GoToTopButton />
+      {selectedImage && (
+        <Modal
+          onClose={closeModal}
+          images={LowCutSocinitialDesigns}
+          initialIndex={LowCutSocinitialDesigns.findIndex(
+            (image) => image.id === selectedImage.id
+          )}
+        />
+      )}
     </div>
   );
 };
